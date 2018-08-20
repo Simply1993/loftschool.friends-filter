@@ -1,6 +1,5 @@
 {
-  "extends": ["plugin:prettier/recommended", "plugin:vue/recommended"],
-  "parser": "vue-eslint-parser",
+  "extends": ["plugin:prettier/recommended"],
   "plugins": [
     "prettier"
   ],
