@@ -1,14 +1,41 @@
-extends ../auth.layout.pug
+extends ../main.layout.pug
+
+block scripts
+  script(src='./assets/js/index.bundle.js')
 
 block content
-  .main-section#main-section
-    header.header.header--welcome
-      .header__left
-      .header__right
-        #btn
-    section.center-block
-      h1.visually-hidden Главная
-      #welcome-flipper
-    footer.footer.footer--bg--transparent
-      .copyright
-        small.copyright__text!= "&copy; Евгений Щербаков | создано с любовью в Loftschool | 2018"
+  .main-section
+    header.header
+    main
+      section.window
+        h1.visually-hidden Другофильтр
+        .friends-filter
+          .friends-filter__header
+            .friends-fitler__title Выберите друзей
+            .friends-filter__btn.friends-filter__btn--close
+          .friends-filter__zones
+            .friends-filter__zone.drop-zone
+              .drop-zone__filter.filter
+                input.filter__input(placeholder='Начните вводить имя друга')
+              .drop-zone__content
+                .drop-zone__title Ваши друзья
+                .drop-zone__list.friends
+                  ul.friends__list
+                    li.friends__item.friend
+                      .friend__photo
+                      .friend__title
+                      .friend__btn.btn.btn--add
+            .friends-filter__zone.drop-zone
+              .drop-zone__filter.filter
+                input.filter__input(placeholder='Начните вводить имя друга')
+              .drop-zone__content
+                .drop-zone__title Друзья в списке
+                .drop-zone__list.friends
+                  ul.friends__list
+                    li.friends__item.friend
+                      .friend__photo
+                      .friend__title
+                      .friend__btn.btn.btn--delete
+          .friends-filter__footer
+            button.friends-filter__btn.btn.btn--delete
+    footer.footer
