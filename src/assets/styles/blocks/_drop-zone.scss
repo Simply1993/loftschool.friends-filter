@@ -23,6 +23,7 @@
 .drop-zone__content {
   padding: 12px 15px 0;
   flex: 1;
+  user-select: none;
 }
 
 .drop-zone__title {

@@ -23,13 +23,18 @@
                   <div class="drop-zone__filter filter">
                     <input class="filter__input" placeholder="Начните вводить имя друга">
                   </div>
-                  <div class="drop-zone__content">
+                  <div class="drop-zone__content" id="source">
                     <div class="drop-zone__title">Ваши друзья</div>
                     <div class="drop-zone__list friends">
                       <ul class="friends__list">
-                        <li class="friends__item friend">
+                        <li class="friends__item friend" draggable="true">
                           <div class="friend__photo" style="background-image: url('./assets/images/avatar.jpg');"><img class="friend__img visually-hidden" alt="Евгений Щербаков"></div>
                           <div class="friend__title">Евгений Щербаков</div>
+                          <div class="friend__btn btn btn--add"></div>
+                        </li>
+                        <li class="friends__item friend" draggable="true">
+                          <div class="friend__photo" style="background-image: url('./assets/images/avatar.jpg');"><img class="friend__img visually-hidden" alt="Сергей Иванов"></div>
+                          <div class="friend__title">Сергей Иванов</div>
                           <div class="friend__btn btn btn--add"></div>
                         </li>
                       </ul>
@@ -40,11 +45,11 @@
                   <div class="drop-zone__filter filter">
                     <input class="filter__input" placeholder="Начните вводить имя друга">
                   </div>
-                  <div class="drop-zone__content">
+                  <div class="drop-zone__content" id="target">
                     <div class="drop-zone__title">Друзья в списке</div>
                     <div class="drop-zone__list friends">
                       <ul class="friends__list">
-                        <li class="friends__item friend">
+                        <li class="friends__item friend" draggable="true">
                           <div class="friend__photo" style="background-image: url('./assets/images/avatar.jpg');"><img class="friend__img visually-hidden" alt="Евгений Щербаков"></div>
                           <div class="friend__title">Евгений Щербаков</div>
                           <div class="friend__btn btn btn--delete"></div>
@@ -63,6 +68,6 @@
       </div>
     </div>
     <script src="./assets/js/bootloader.bundle.js"></script>
-    <script src="./assets/js/index.bundle.js"></script>
+    <script src="./assets/js/main.bundle.js"></script>
   </body>
 </html>

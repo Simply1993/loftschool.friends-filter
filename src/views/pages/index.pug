@@ -1,7 +1,7 @@
 extends ../main.layout.pug
 
 block scripts
-  script(src='./assets/js/index.bundle.js')
+  script(src='./assets/js/main.bundle.js')
 
 block content
   .main-section
@@ -16,23 +16,24 @@ block content
             .friends-filter__zone.drop-zone.drop-zone--left
               .drop-zone__filter.filter
                 input.filter__input(placeholder='Начните вводить имя друга')
-              .drop-zone__content
+              .drop-zone__content#source
                 .drop-zone__title Ваши друзья
                 .drop-zone__list.friends
                   ul.friends__list
-                    li.friends__item.friend
-                      .friend__photo(style="background-image: url('./assets/images/avatar.jpg');")
-                        img.friend__img.visually-hidden(alt='Евгений Щербаков')
-                      .friend__title Евгений Щербаков
-                      .friend__btn.btn.btn--add
+                    each friend in friends
+                      li.friends__item.friend(draggable='true')
+                        .friend__photo(style="background-image: url('./assets/images/avatar.jpg');")
+                          img.friend__img.visually-hidden(alt=`${friend.name} ${friend.lastName}`)
+                        .friend__title= `${friend.name} ${friend.lastName}`
+                        .friend__btn.btn.btn--add
             .friends-filter__zone.drop-zone.drop-zone--right
               .drop-zone__filter.filter
                 input.filter__input(placeholder='Начните вводить имя друга')
-              .drop-zone__content
+              .drop-zone__content#target
                 .drop-zone__title Друзья в списке
                 .drop-zone__list.friends
                   ul.friends__list
-                    li.friends__item.friend
+                    li.friends__item.friend(draggable='true')
                       .friend__photo(style="background-image: url('./assets/images/avatar.jpg');")
                         img.friend__img.visually-hidden(alt='Евгений Щербаков')
                       .friend__title Евгений Щербаков
