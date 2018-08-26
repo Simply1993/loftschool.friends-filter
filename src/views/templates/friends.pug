@@ -1,0 +1,7 @@
+ul.friends__list
+    each friend in friends
+        li.friends__item.friend(draggable='true')
+            .friend__photo(style=`background-image: url(${friend.photo_100});`)
+                img.friend__img.visually-hidden(alt=`${friend.first_name} ${friend.last_name}`)
+            .friend__title= `${friend.first_name} ${friend.last_name}`
+            .friend__btn.btn.btn--add

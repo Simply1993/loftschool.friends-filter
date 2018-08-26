@@ -16,6 +16,7 @@ export default function DnD(zones) {
 
         if (currentDrag.source !== zone) {
           let btn = currentDrag.node.querySelector(".btn");
+          let list = zone.querySelector(".friends__list");
 
           if (btn.classList.contains("btn--add")) {
             btn.classList.remove("btn--add");
@@ -25,7 +26,7 @@ export default function DnD(zones) {
             btn.classList.add("btn--add");
           }
 
-          zone.appendChild(currentDrag.node);
+          list.appendChild(currentDrag.node);
         }
 
         currentDrag = null;

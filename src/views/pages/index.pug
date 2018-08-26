@@ -19,13 +19,6 @@ block content
               .drop-zone__content#source
                 .drop-zone__title Ваши друзья
                 .drop-zone__list.friends
-                  ul.friends__list
-                    each friend in friends
-                      li.friends__item.friend(draggable='true')
-                        .friend__photo(style="background-image: url('./assets/images/avatar.jpg');")
-                          img.friend__img.visually-hidden(alt=`${friend.name} ${friend.lastName}`)
-                        .friend__title= `${friend.name} ${friend.lastName}`
-                        .friend__btn.btn.btn--add
             .friends-filter__zone.drop-zone.drop-zone--right
               .drop-zone__filter.filter
                 input.filter__input(placeholder='Начните вводить имя друга')
