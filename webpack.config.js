@@ -28,7 +28,7 @@ module.exports = {
   plugins: [
     new UglifyJsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-      name: ["vendor", "bootloader"]
+      name: ["bootloader"]
     })
   ],
   devtool: env === "development" ? "#eval-source-map" : ""

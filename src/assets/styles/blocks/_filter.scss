@@ -1,0 +1,13 @@
+.filter__input {
+  border-radius: 20px;
+  border: none;
+  background-color: #fff;
+  padding: 8px 10px 8px 25px;
+  height: 30px;
+  width: 100%;
+  &::placeholder {
+    color: #9f9f9f;
+    font-family: $font-type;
+    font-weight: 300;
+  }
+}

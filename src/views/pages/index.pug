@@ -5,16 +5,15 @@ block scripts
 
 block content
   .main-section
-    header.header
-    main
+    main.main
       section.window
         h1.visually-hidden Другофильтр
         .friends-filter
           .friends-filter__header
             .friends-fitler__title Выберите друзей
-            .friends-filter__btn.friends-filter__btn--close
+            .friends-filter__btn.btn.btn--close
           .friends-filter__zones
-            .friends-filter__zone.drop-zone
+            .friends-filter__zone.drop-zone.drop-zone--left
               .drop-zone__filter.filter
                 input.filter__input(placeholder='Начните вводить имя друга')
               .drop-zone__content
@@ -22,10 +21,11 @@ block content
                 .drop-zone__list.friends
                   ul.friends__list
                     li.friends__item.friend
-                      .friend__photo
-                      .friend__title
+                      .friend__photo(style="background-image: url('./assets/images/avatar.jpg');")
+                        img.friend__img.visually-hidden(alt='Евгений Щербаков')
+                      .friend__title Евгений Щербаков
                       .friend__btn.btn.btn--add
-            .friends-filter__zone.drop-zone
+            .friends-filter__zone.drop-zone.drop-zone--right
               .drop-zone__filter.filter
                 input.filter__input(placeholder='Начните вводить имя друга')
               .drop-zone__content
@@ -33,9 +33,9 @@ block content
                 .drop-zone__list.friends
                   ul.friends__list
                     li.friends__item.friend
-                      .friend__photo
-                      .friend__title
+                      .friend__photo(style="background-image: url('./assets/images/avatar.jpg');")
+                        img.friend__img.visually-hidden(alt='Евгений Щербаков')
+                      .friend__title Евгений Щербаков
                       .friend__btn.btn.btn--delete
           .friends-filter__footer
-            button.friends-filter__btn.btn.btn--delete
-    footer.footer
+            button.friends-filter__btn.btn.btn--save Сохранить

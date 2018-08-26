@@ -1,0 +1,33 @@
+.friends-filter {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.friends-filter__header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $accent;
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  padding: 15px 15px;
+}
+
+.friends-filter__zones {
+  display: flex;
+  height: 100%;
+  background-color: #fff;
+}
+
+.friends-filter__zone {
+  width: 50%;
+}
+
+.friends-filter__footer {
+  background-color: #f0f0f0;
+  padding: 7px;
+  text-align: right;
+}

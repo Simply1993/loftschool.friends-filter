@@ -1,0 +1,50 @@
+.btn {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn--save {
+  color: #fff;
+  font-weight: 300;
+  padding: 8px 15px;
+  background-color: $accent;
+  border-radius: 8px;
+  transition: background-color .3s;
+  &:hover {
+    background-color: lighten($accent, 15%);
+  }
+  &:active {
+    background-color: darken($accent, 15%);
+  }
+}
+
+.btn--close, .btn--add, .btn--delete {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  &:before {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  &:after {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  &:before, &:after {
+    content: '';
+    height: 4px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+  }
+}
+
+.btn--add, .btn--delete {
+  &:before, &:after {
+    background-color: #c4c4c4;
+  }
+}
+
+.btn--add {
+  transform: rotate(45deg);
+}

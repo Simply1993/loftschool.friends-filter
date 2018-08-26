@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Friend Filter</title>
+    <link rel="stylesheet" href="./assets/css/main.min.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main-section">
+        <main class="main">
+          <section class="window">
+            <h1 class="visually-hidden">Другофильтр</h1>
+            <div class="friends-filter">
+              <div class="friends-filter__header">
+                <div class="friends-fitler__title">Выберите друзей</div>
+                <div class="friends-filter__btn btn btn--close"></div>
+              </div>
+              <div class="friends-filter__zones">
+                <div class="friends-filter__zone drop-zone drop-zone--left">
+                  <div class="drop-zone__filter filter">
+                    <input class="filter__input" placeholder="Начните вводить имя друга">
+                  </div>
+                  <div class="drop-zone__content">
+                    <div class="drop-zone__title">Ваши друзья</div>
+                    <div class="drop-zone__list friends">
+                      <ul class="friends__list">
+                        <li class="friends__item friend">
+                          <div class="friend__photo" style="background-image: url('./assets/images/avatar.jpg');"><img class="friend__img visually-hidden" alt="Евгений Щербаков"></div>
+                          <div class="friend__title">Евгений Щербаков</div>
+                          <div class="friend__btn btn btn--add"></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="friends-filter__zone drop-zone drop-zone--right">
+                  <div class="drop-zone__filter filter">
+                    <input class="filter__input" placeholder="Начните вводить имя друга">
+                  </div>
+                  <div class="drop-zone__content">
+                    <div class="drop-zone__title">Друзья в списке</div>
+                    <div class="drop-zone__list friends">
+                      <ul class="friends__list">
+                        <li class="friends__item friend">
+                          <div class="friend__photo" style="background-image: url('./assets/images/avatar.jpg');"><img class="friend__img visually-hidden" alt="Евгений Щербаков"></div>
+                          <div class="friend__title">Евгений Щербаков</div>
+                          <div class="friend__btn btn btn--delete"></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="friends-filter__footer">
+                <button class="friends-filter__btn btn btn--save">Сохранить</button>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="./assets/js/bootloader.bundle.js"></script>
+    <script src="./assets/js/index.bundle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+.friend {
+  height: 60px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color .3s;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 8px;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
+
+.friend__photo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.friend__title {
+  font-weight: 500;
+  flex: 1;
+  padding: 0 10px;
+}
