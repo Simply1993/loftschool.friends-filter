@@ -13,23 +13,18 @@ block content
             .friends-fitler__title Выберите друзей
             .friends-filter__btn.btn.btn--close
           .friends-filter__zones
-            .friends-filter__zone.drop-zone.drop-zone--left
+            .friends-filter__zone.drop-zone.drop-zone--left#source
               .drop-zone__filter.filter
                 input.filter__input(placeholder='Начните вводить имя друга')
-              .drop-zone__content#source
+              .drop-zone__content
                 .drop-zone__title Ваши друзья
                 .drop-zone__list.friends
-            .friends-filter__zone.drop-zone.drop-zone--right
+            .friends-filter__zone.drop-zone.drop-zone--right#target
               .drop-zone__filter.filter
                 input.filter__input(placeholder='Начните вводить имя друга')
-              .drop-zone__content#target
+              .drop-zone__content
                 .drop-zone__title Друзья в списке
                 .drop-zone__list.friends
                   ul.friends__list
-                    li.friends__item.friend(draggable='true')
-                      .friend__photo(style="background-image: url('./assets/images/avatar.jpg');")
-                        img.friend__img.visually-hidden(alt='Евгений Щербаков')
-                      .friend__title Евгений Щербаков
-                      .friend__btn.btn.btn--delete
           .friends-filter__footer
             button.friends-filter__btn.btn.btn--save Сохранить

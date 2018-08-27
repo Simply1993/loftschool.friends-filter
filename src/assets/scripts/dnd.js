@@ -1,7 +1,48 @@
-export default function DnD(zones) {
+export default function DnD(options) {
   let currentDrag;
 
-  zones.forEach(zone => {
+  let moveElement = function(zone, source, node) {
+    if (source !== zone) {
+      let btn = node.querySelector(".btn");
+      let list = zone.querySelector(".friends__list");
+      if (btn.classList.contains(options.buttonAdd)) {
+        btn.classList.remove(options.buttonAdd);
+        btn.classList.add(options.buttonDelete);
+      } else {
+        btn.classList.remove(options.buttonDelete);
+        btn.classList.add(options.buttonAdd);
+      }
+
+      list.appendChild(node);
+      let itemIndex = options.friendsSource.findIndex(
+        friend => friend.id == node.getAttribute("data-id")
+      );
+      console.log(itemIndex);
+      if (itemIndex >= 0) {
+        let itemDelete = options.friendsSource.splice(itemIndex, 1);
+        options.friendsTarget.push(itemDelete[0]);
+      }
+      console.log(options.friendsSource, options.friendsTarget);
+    }
+  };
+
+  options.zones.forEach((zone, index) => {
+    zone.addEventListener("click", e => {
+      if (e.target.classList.contains(options.buttonAdd)) {
+        moveElement(
+          options.zones[index + 1],
+          zone,
+          e.target.closest(".friend")
+        );
+      } else if (e.target.classList.contains(options.buttonDelete)) {
+        moveElement(
+          options.zones[index - 1],
+          zone,
+          e.target.closest(".friend")
+        );
+      }
+    });
+
     zone.addEventListener("dragstart", e => {
       currentDrag = { source: zone, node: e.target };
     });
@@ -14,20 +55,7 @@ export default function DnD(zones) {
       if (currentDrag) {
         e.preventDefault();
 
-        if (currentDrag.source !== zone) {
-          let btn = currentDrag.node.querySelector(".btn");
-          let list = zone.querySelector(".friends__list");
-
-          if (btn.classList.contains("btn--add")) {
-            btn.classList.remove("btn--add");
-            btn.classList.add("btn--delete");
-          } else {
-            btn.classList.remove("btn--delete");
-            btn.classList.add("btn--add");
-          }
-
-          list.appendChild(currentDrag.node);
-        }
+        moveElement(zone, currentDrag.source, currentDrag.node);
 
         currentDrag = null;
       }

@@ -1,5 +1,13 @@
 import DnD from "./dnd";
 
+const source = document.querySelector("#source");
+const target = document.querySelector("#target");
+const filterInputSource = source.querySelector(".filter__input");
+const filterInputTarget = target.querySelector(".filter__input");
+const btnSave = document.querySelector(".btn--save");
+let friendsListSource = [];
+let friendsListTarget = [];
+
 VK.init({
   apiId: 6673689
 });
@@ -30,19 +38,50 @@ function callAPI(method, params) {
   });
 }
 
+function isMatching(full, chunk) {
+  return full.toLowerCase().indexOf(chunk.toLowerCase()) !== -1;
+}
+
+function addToZone(zone, friends) {
+  let template = require("pug-loader!../../views/templates/friends.pug");
+  let friendsList = zone.querySelector(".friends");
+  let filterInput = zone.querySelector(".filter__input");
+  let friendsFilter = friends.filter(friend =>
+    isMatching(`${friend.first_name} ${friend.last_name}`, filterInput.value)
+  );
+  let html = template({
+    friends: friendsFilter
+  });
+
+  friendsList.innerHTML = html;
+  return friendsFilter;
+}
+
 //получение друзей
 auth()
   .then(() => callAPI("friends.get", { fields: "photo_100" }))
   .then(friends => {
-    console.log(friends);
-    let template = require("pug-loader!../../views/templates/friends.pug");
-    let locals = { friends: friends.items };
-    let html = template(locals);
-    let friendsList = document.querySelector("#source .friends");
-    friendsList.innerHTML = html;
+    friendsListSource = friends.items;
+    addToZone(source, friendsListSource);
+
+    DnD({
+      zones: [source, target],
+      buttonAdd: "btn--add",
+      buttonDelete: "btn--delete",
+      friendsSource: friendsListSource,
+      friendsTarget: friendsListTarget
+    });
+
+    filterInputSource.addEventListener("keyup", () =>
+      addToZone(source, friendsListSource)
+    );
+    filterInputTarget.addEventListener("keyup", () =>
+      addToZone(target, friendsListTarget)
+    );
+    btnSave.addEventListener("click", () => {
+      localStorage["friend-filter"] = JSON.stringify({
+        friendsListSource,
+        friendsListTarget
+      });
+    });
   });
-
-const source = document.querySelector("#source");
-const target = document.querySelector("#target");
-
-DnD([source, target]);
