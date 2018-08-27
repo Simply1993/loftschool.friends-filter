@@ -2,6 +2,7 @@ export default function DnD(options) {
   let currentDrag;
 
   let moveElement = function(zone, source, node) {
+    let itemIndex;
     if (source !== zone) {
       let btn = node.querySelector(".btn");
       let list = zone.querySelector(".friends__list");
@@ -14,15 +15,18 @@ export default function DnD(options) {
       }
 
       list.appendChild(node);
-      let itemIndex = options.friendsSource.findIndex(
+      itemIndex = options.friendsSource.findIndex(
         friend => friend.id == node.getAttribute("data-id")
       );
-      console.log(itemIndex);
       if (itemIndex >= 0) {
         let itemDelete = options.friendsSource.splice(itemIndex, 1);
         options.friendsTarget.push(itemDelete[0]);
+      } else {
+        itemIndex = options.friendsTarget.findIndex(
+          friend => friend.id == node.getAttribute("data-id")
+        );
+        options.friendsTarget.splice(itemIndex, 1);
       }
-      console.log(options.friendsSource, options.friendsTarget);
     }
   };
 

@@ -50,19 +50,30 @@ function addToZone(zone, friends) {
     isMatching(`${friend.first_name} ${friend.last_name}`, filterInput.value)
   );
   let html = template({
-    friends: friendsFilter
+    friends: friendsFilter,
+    zone: zone.getAttribute("id")
   });
 
   friendsList.innerHTML = html;
-  return friendsFilter;
 }
 
 //получение друзей
 auth()
   .then(() => callAPI("friends.get", { fields: "photo_100" }))
   .then(friends => {
-    friendsListSource = friends.items;
-    addToZone(source, friendsListSource);
+    if (localStorage["friends-filter"]) {
+      let localFriends = JSON.parse(localStorage["friends-filter"]);
+      friendsListTarget = friends.items.filter(friend =>
+        localFriends.includes(friend.id)
+      );
+      friendsListSource = friends.items.filter(
+        friend => !localFriends.includes(friend.id)
+      );
+      addToZone(source, friendsListSource);
+      addToZone(target, friendsListTarget);
+    } else {
+      addToZone(source, friends.items);
+    }
 
     DnD({
       zones: [source, target],
@@ -79,9 +90,9 @@ auth()
       addToZone(target, friendsListTarget)
     );
     btnSave.addEventListener("click", () => {
-      localStorage["friend-filter"] = JSON.stringify({
-        friendsListSource,
-        friendsListTarget
-      });
+      console.log(friendsListTarget);
+      localStorage["friends-filter"] = JSON.stringify(
+        friendsListTarget.map(friend => friend.id)
+      );
     });
   });
