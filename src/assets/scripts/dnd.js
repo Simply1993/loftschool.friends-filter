@@ -1,8 +1,11 @@
+import { isMatching } from "./main";
+
 export default function DnD(options) {
   let currentDrag;
 
   let moveElement = function(zone, source, node) {
-    let itemIndex;
+    let filterInput = zone.querySelector(".filter__input");
+    let itemIndex, itemFriend, itemDelete;
     if (source !== zone) {
       let btn = node.querySelector(".btn");
       let list = zone.querySelector(".friends__list");
@@ -14,18 +17,29 @@ export default function DnD(options) {
         btn.classList.add(options.buttonAdd);
       }
 
-      list.appendChild(node);
       itemIndex = options.friendsSource.findIndex(
         friend => friend.id == node.getAttribute("data-id")
       );
       if (itemIndex >= 0) {
-        let itemDelete = options.friendsSource.splice(itemIndex, 1);
+        itemDelete = options.friendsSource.splice(itemIndex, 1);
         options.friendsTarget.push(itemDelete[0]);
       } else {
         itemIndex = options.friendsTarget.findIndex(
           friend => friend.id == node.getAttribute("data-id")
         );
-        options.friendsTarget.splice(itemIndex, 1);
+        itemDelete = options.friendsTarget.splice(itemIndex, 1);
+        options.friendsSource.push(itemDelete[0]);
+      }
+      itemFriend = itemDelete[0];
+      if (
+        isMatching(
+          `${itemFriend.first_name} ${itemFriend.last_name}`,
+          filterInput.value
+        )
+      ) {
+        list.appendChild(node);
+      } else {
+        node.remove();
       }
     }
   };

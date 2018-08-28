@@ -38,7 +38,7 @@ function callAPI(method, params) {
   });
 }
 
-function isMatching(full, chunk) {
+export function isMatching(full, chunk) {
   return full.toLowerCase().indexOf(chunk.toLowerCase()) !== -1;
 }
 
